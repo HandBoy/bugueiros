@@ -1,0 +1,441 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9 no-focus" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+
+        <title>Coopbuggy</title>
+
+        <meta name="description" content="OneUI - Admin Dashboard Template &amp; UI Framework created by pixelcave and published on Themeforest">
+        <meta name="author" content="pixelcave">
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <!-- Icons -->
+        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+        <link rel="shortcut icon" href="{% static 'assets/img/favicons/favicon.png' %}">
+
+        <link rel="icon" type="image/png" href="{% static 'assets/img/favicons/favicon-16x16.png' %}" sizes="16x16">
+        <link rel="icon" type="image/png" href="{% static 'assets/img/favicons/favicon-32x32.png' %}" sizes="32x32">
+        <link rel="icon" type="image/png" href="{% static 'assets/img/favicons/favicon-96x96.png' %}" sizes="96x96">
+        <link rel="icon" type="image/png" href="{% static 'assets/img/favicons/favicon-160x160.png' %}" sizes="160x160">
+        <link rel="icon" type="image/png" href="{% static 'assets/img/favicons/favicon-192x192.png' %}" sizes="192x192">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="{% static 'assets/img/favicons/apple-touch-icon-57x57.png' %}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/img/favicons/apple-touch-icon-60x60.png' %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/img/favicons/apple-touch-icon-72x72.png' %}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/favicons/apple-touch-icon-76x76.png' %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/img/favicons/apple-touch-icon-114x114.png' %}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/img/favicons/apple-touch-icon-120x120.png' %}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/img/favicons/apple-touch-icon-144x144.png' %}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/img/favicons/apple-touch-icon-152x152.png' %}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/img/favicons/apple-touch-icon-180x180.png' %}">
+        <!-- END Icons -->
+
+        <!-- Stylesheets -->
+        <!-- Web fonts
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">-->
+        <link rel="stylesheet" href="{% static 'assets/css/font.css' %}">
+
+        <!-- Bootstrap and OneUI CSS framework -->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" id="css-main" href="{% static 'assets/css/oneui.css' %}">
+
+        <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
+        <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
+        <!-- END Stylesheets -->
+    </head>
+    <body>
+        <!-- Page Container -->
+        <div id="page-container">
+            <!-- Main Container -->
+            <main id="main-container">
+                <!-- Hero Content -->
+                <div class="bg-video" data-vide-bg="{% static 'assets/img/videos/hero_sunrise' %}" data-vide-options="posterType: jpg, position: 50% 75%">
+                    <div class="bg-primary-dark-op">
+                        <section class="content content-full content-boxed">
+                            <!-- Section Content -->
+                            <div class="text-center push-30-t visibility-hidden" data-toggle="appear" data-class="animated fadeIn">
+                                <a class="fa-2x text-white" href="">
+                                    <i class="fa fa-car text-primary push-5-r"></i>COOPBUGGY
+                                </a>
+                            </div>
+                            <div class="push-100-t push-50 text-center">
+                                <h1 class="h2 font-w700 text-white push-20 visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">PASSEIOS DE BUGGY POR TODO LITORAL DO NORDESTE.</h1>
+                                <h2 class="h4 text-white-op visibility-hidden" data-toggle="appear" data-timeout="750" data-class="animated fadeIn"><em>A Coopbuggy, Cooperativa de Transportes Turísticos e Serviços Afins, nasceu da necessidade da Categoria dos Bugueiros Profissionais do Rio Grande do Norte se organizar, oferecendo um serviço diferenciado, caracterizado pela qualidade, objetivando a satisfação do cliente, no caso específico, os turistas que visitam Natal..</em></h2>
+                                <div class="push-50-t push-20 text-center">
+                                    <a class="btn btn-rounded btn-noborder btn-lg btn-success push-10-r push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" href="contato.html">
+                                        <i class="fa fa-address-card-o push-10-r"></i>Entre em Contato
+                                    </a>
+                                    <a class="btn btn-rounded btn-noborder btn-lg btn-primary push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" href="login.html">
+                                        <i class="fa fa-user-o push-10-r"></i>Login</a>
+                                </div>
+                            </div>
+                            <!-- END Section Content -->
+                        </section>
+                    </div>
+                </div>
+                <!-- END Hero Content -->
+
+                <!-- Live Previews -->
+                <div class="bg-gray-lighter">
+                    <section class="content content-boxed">
+                        <!-- Section Content -->
+                        <h3 class="font-w400 text-black push-30-t push-20">Roteiros</h3>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="base_pages_dashboard.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/1.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem </div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2 ribbon ribbon-modern ribbon-success" href="bd_dashboard.html">
+                                    <div class="ribbon-box font-w600">New!</div>
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/2.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="javascript:void(0)">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/3.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="frontend_home.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/4.jpg' %} " alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="frontend_home_header_nav.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/5.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="font-w400 text-black push-50-t push-20">Promoções</h3>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="index.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/1.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="index.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/2.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="index.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/3.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="index.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/4.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="index.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/5.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="index.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/1.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="font-w400 text-black push-50-t push-20">Pacotes</h3>
+                        <div class="row push-30">
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="index.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/2.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="index.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/3.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="index.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/4.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="index.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/5.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="index.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/1.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <a class="block block-link-hover2" href="base_pages_dashboard.html">
+                                    <img class="img-responsive" src="{% static 'assets/img/coopbuggy/2.jpg' %}" alt="">
+                                    <div class="block-content">
+                                        <div class="h4 push-5">Viagem</div>
+                                        <p class="text-muted">Descrição da Viagem</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END Section Content -->
+                    </section>
+                </div>
+                <!-- END Live Previews -->
+
+                <!-- Features -->
+                <div class="bg-white">
+                    <section class="content content-boxed">
+                        <!-- Section Content -->
+                        <div class="row items-push-3x push-50-t nice-copy">
+                            <div class="col-sm-4">
+                                <div class="text-center push-30">
+                                    <span class="item item-2x item-circle border">
+                                        <i class="si si-energy text-city"></i>
+                                    </span>
+                                </div>
+                                <h3 class="h5 font-w600 text-uppercase text-center push-10">Roteiros</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat nunc nec ultrices sollicitudin. Aliquam et volutpat massa, vitae suscipit erat..</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="text-center push-30">
+                                    <span class="item item-2x item-circle border">
+                                        <i class="si si-rocket text-success"></i>
+                                    </span>
+                                </div>
+                                <h3 class="h5 font-w600 text-uppercase text-center push-10">Promoções</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat nunc nec ultrices sollicitudin. Aliquam et volutpat massa, vitae suscipit erat..</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="text-center push">
+                                    <span class="item item-2x item-circle border">
+                                        <i class="si si-screen-smartphone text-flat"></i>
+                                    </span>
+                                </div>
+                                <h3 class="h5 font-w600 text-uppercase text-center push-10">Viagens</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat nunc nec ultrices sollicitudin. Aliquam et volutpat massa, vitae suscipit erat..</p>
+                            </div>
+                        </div>
+                        <div class="row items-push-3x push-50-t nice-copy">
+                            <div class="col-sm-4">
+                                <div class="text-center push">
+                                    <span class="item item-2x item-circle border">
+                                        <i class="si si-badge text-warning"></i>
+                                    </span>
+                                </div>
+                                <h3 class="h5 font-w600 text-uppercase text-center push-10">Turismo</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat nunc nec ultrices sollicitudin. Aliquam et volutpat massa, vitae suscipit erat..</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="text-center push">
+                                    <span class="item item-2x item-circle border">
+                                        <i class="si si-globe text-black"></i>
+                                    </span>
+                                </div>
+                                <h3 class="h5 font-w600 text-uppercase text-center push-10">Natureza</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat nunc nec ultrices sollicitudin. Aliquam et volutpat massa, vitae suscipit erat..</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="text-center push">
+                                    <span class="item item-2x item-circle border">
+                                        <i class="si si-clock text-info"></i>
+                                    </span>
+                                </div>
+                                <h3 class="h5 font-w600 text-uppercase text-center push-10">Conforto</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat nunc nec ultrices sollicitudin. Aliquam et volutpat massa, vitae suscipit erat..</p>
+                            </div>
+                        </div>
+                        <div class="row items-push-3x nice-copy">
+                            <div class="col-sm-4">
+                                <div class="text-center push">
+                                    <span class="item item-2x item-circle border">
+                                        <i class="si si-check text-success"></i>
+                                    </span>
+                                </div>
+                                <h3 class="h5 font-w600 text-uppercase text-center push-10">Viagens</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat nunc nec ultrices sollicitudin. Aliquam et volutpat massa, vitae suscipit erat.</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="text-center push-30">
+                                    <span class="item item-2x item-circle border">
+                                        <i class="fa fa-car text-success"></i>
+                                    </span>
+                                </div>
+                                <h3 class="h5 font-w600 text-center push-10">Promoções</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat nunc nec ultrices sollicitudin. Aliquam et volutpat massa, vitae suscipit erat.</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="text-center push">
+                                    <span class="item item-2x item-circle border text-smooth">
+                                        <i class="si si-speedometer"></i>
+                                    </span>
+                                </div>
+                                <h3 class="h5 font-w600 text-uppercase text-center push-10">Contato</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat nunc nec ultrices sollicitudin. Aliquam et volutpat massa, vitae suscipit erat.</p>
+                            </div>
+                        </div>
+                        <!-- END Section Content -->
+                    </section>
+                </div>
+                <!-- END Features -->
+
+                <!-- Ratings -->
+                <div class="bg-image" style="background-image: url({% static 'assets/img/photos/photo36@2x.jpg' %});">
+                    <div class="bg-primary-dark-op">
+                        <section class="content content-full content-boxed overflow-hidden">
+                            <!-- Section Content -->
+                            <div class="row items-push-2x push-50-t">
+                                <div class="col-sm-4 visibility-hidden" data-toggle="appear">
+                                    <div class="text-warning push-10-t push-15">
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                    </div>
+                                    <div class="h4 text-white-op push-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat nunc nec ultrices sollicitudin. Aliquam et volutpat massa, vitae suscipit erat..</div>
+                                    <div class="h6 text-gray">For Design Quality by <em>alperaydyn2</em></div>
+                                </div>
+                                <div class="col-sm-4 visibility-hidden" data-toggle="appear" data-timeout="150">
+                                    <div class="text-warning push-10-t push-15">
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                    </div>
+                                    <div class="h4 text-white-op push-5">Awesome !!! Thanks for a so great !!</div>
+                                    <div class="h6 text-gray">For Feature Availability by <em>Markuitos</em></div>
+                                </div>
+                                <div class="col-sm-4 visibility-hidden" data-toggle="appear" data-timeout="300">
+                                    <div class="text-warning push-10-t push-15">
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                    </div>
+                                    <div class="h4 text-white-op push-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat nunc nec ultrices sollicitudin. Aliquam et volutpat massa, vitae suscipit erat.</div>
+                                    <div class="h6 text-gray">For Flexibility by <em>corverdevelopment</em></div>
+                                </div>
+                            </div>
+                            <div class="h5 text-center visibility-hidden" data-toggle="appear" data-class="animated fadeInUp">
+                                <span class="text-gray">Would you like to read more reviews and testimonials? You can find them over at <a class="text-primary-light" href="">Coop Buggy Coopbuggy</a>.</span>
+                            </div>
+                            <!-- END Section Content -->
+                        </section>
+                    </div>
+                </div>
+                <!-- END Ratings -->
+
+                <!-- Get Started -->
+                <div class="bg-white">
+                    <section class="content content-full content-boxed">
+                        <!-- Section Content -->
+                        <div class="push-20-t push-20 text-center">
+                            <a class="btn btn-rounded btn-noborder btn-lg btn-success push-10-r push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" href="contato.html">
+                                <i class="fa fa-address-card-o push-10-r"></i>Entre em Contato
+                            </a>
+                            <a class="btn btn-rounded btn-noborder btn-lg btn-primary push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" href="login.html">
+                                <i class="fa fa-user-o push-10-r"></i>Login
+                            </a>
+                            <h3 class="h5 push-50-t visibility-hidden" data-toggle="appear" data-class="animated fadeInUp"> Desenvolvido por <a href="">Handerson Medeiros</a></h3>
+                        </div>
+                        <!-- END Section Content -->
+                    </section>
+                </div>
+                <!-- END Get Started -->
+            </main>
+            <!-- END Main Container -->
+        </div>
+        <!-- END Page Container -->
+
+        <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
+        <script src="{% static 'assets/js/core/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/core/bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets/js/core/jquery.slimscroll.min.js' %}"></script>
+        <script src="{% static 'assets/js/core/jquery.scrollLock.min.js' %}"></script>
+        <script src="{% static 'assets/js/core/jquery.appear.min.js' %}"></script>
+        <script src="{% static 'assets/js/core/jquery.countTo.min.js' %}"></script>
+        <script src="{% static 'assets/js/core/jquery.placeholder.min.js' %}"></script>
+        <script src="{% static 'assets/js/core/js.cookie.min.js' %}"></script>
+        <script src="{% static 'assets/js/app.js' %}"></script>
+
+        <!-- Page JS Code -->
+        <script src="{% static 'assets/js/plugins/jquery-vide/jquery.vide.min.js' %}"></script>
+        <script>
+            jQuery(function () {
+                // Init page helpers (Appear plugin)
+                App.initHelpers('appear');
+            });
+        </script>
+    </body>
+</html>
