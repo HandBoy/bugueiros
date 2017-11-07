@@ -1,1 +1,1 @@
-web: gunicorn /bugueiros/wsgi.py --log-file -
+web: gunicorn bugueiros.wsgi --log-file -
