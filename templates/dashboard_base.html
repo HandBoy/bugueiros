@@ -45,6 +45,10 @@
         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
         <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
         <!-- END Stylesheets -->
+
+        {% block css-style %}
+
+        {% endblock %}
     </head>
     <body>
         <!-- Page Container -->
@@ -123,7 +127,7 @@
                                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-user"></i><span class="sidebar-mini-hide">Gerenciar Usuários</span></a>
                                     <ul>
                                         <li>
-                                            <a href="users.html">Listar</a>
+                                            <a href="{% url 'bugue:users' %}">Listar</a>
                                         </li>
                                         <li>
                                             <a href="{% url 'bugue:register' %}">Adicionar</a>
