@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db import transaction
 from .forms import UserForm, ProfileForm, SignUpForm
+from .models import Profile;
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -22,10 +23,15 @@ def dashboard(request):
     context = {}
     return render(request, template_name='dashboard.html', context=context)
 
+@login_required
+def user_list(request):
+    context = {}
+    context['usuarios'] = User.objects.all()
+    return render(request, 'profile/list.html', context)
 
 @login_required
 @transaction.atomic
-def update_profile(request):
+def update_profile(request, pk):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         profile_form = ProfileForm(request.POST, request.FILES)
@@ -39,12 +45,14 @@ def update_profile(request):
         else:
             messages.error(request, 'Please correct the error below.')
     else:
+        user = get_object_or_404(User, pk=pk)
         user_form = UserForm()
         profile_form = ProfileForm()
 
     return render(request, 'profile/add.html', {
         'user_form': user_form,
-        'profile_form': profile_form
+        'profile_form': profile_form,
+        'user': user,
     })
 
 @login_required

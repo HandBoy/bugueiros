@@ -28,7 +28,9 @@ DEBUG = True
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = [
     'bugueiros.herokuapp.com',
-    '127.0.0.1'
+    '127.0.0.1',
+    'localhost',
+    '*',
 ]
 
 LOGIN_REDIRECT_URL = '/dashboard'
@@ -42,11 +44,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #THIRD_PARTY_APPS/
     'apps.bugueiro.apps.BugueiroConfig',
+    'apps.api',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware', #Manages sessions across requests
     'django.middleware.common.CommonMiddleware',
@@ -75,6 +83,8 @@ TEMPLATES = [
     },
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 WSGI_APPLICATION = 'bugueiros.wsgi.application'
 
 
@@ -96,6 +106,14 @@ DATABASES = {
     #}
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators

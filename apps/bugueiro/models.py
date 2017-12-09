@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from rest_framework.authtoken.models import Token
 
 # Create your models here.
 
@@ -19,11 +20,11 @@ class Permission(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=100, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    #photo = models.ImageField(upload_to=get_upload_path_foto_perfil, null=True, blank=True)
+    photo = models.ImageField(upload_to=get_upload_path_foto_perfil, null=True, blank=True)
     permission = models.ForeignKey(Permission, default=5)
     GENDER = ((1, 'Masculino'),(2, 'Feminino'),)
     gender = models.IntegerField(choices=GENDER, default=1, )
@@ -36,3 +37,18 @@ class Profile(models.Model):
         if created:
             Profile.objects.create(user=instance)
         instance.profile.save()
+
+    @receiver(post_save, sender=User)
+    def create_auth_token(sender, instance=None, created=False, **kwargs):
+        if created:
+            Token.objects.create(user=instance)
+
+
+class Travel(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="travel")
+    trip = models.ForeignKey('self', blank=True, null=True)
+    path = models.TextField(max_length=500)
+    seq = models.IntegerField(blank=True, null=True)
+    start = models.BooleanField(default=False)
+    end = models.BooleanField(default=False)
+    created_date = models.DateTimeField(auto_now_add=True)
