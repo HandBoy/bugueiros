@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     #THIRD_PARTY_APPS/
     'apps.bugueiro.apps.BugueiroConfig',
     'apps.api',
+    'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
 ]
