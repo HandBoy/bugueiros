@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #THIRD_PARTY_APPS/
     'apps.bugueiro',
     'apps.api',
     'rest_framework',
