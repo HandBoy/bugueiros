@@ -31,7 +31,7 @@ def user_list(request):
 
 @login_required
 @transaction.atomic
-def update_profile(request, pk):
+def add_profile(request, pk):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         profile_form = ProfileForm(request.POST, request.FILES)
@@ -50,6 +50,33 @@ def update_profile(request, pk):
         profile_form = ProfileForm()
 
     return render(request, 'profile/add.html', {
+        'user_form': user_form,
+        'profile_form': profile_form,
+        'user': user,
+    })
+
+
+@login_required
+@transaction.atomic
+def update_profile(request, pk):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST)
+        profile_form = ProfileForm(request.POST, request.FILES)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            profile_form.user = user
+            profile_form.save()
+            messages.success(request, 'Your profile was successfully updated!')
+            return redirect('settings:profile')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        user = get_object_or_404(User, pk=pk)
+        user_form = UserForm()
+        profile_form = ProfileForm()
+
+    return render(request, 'profile/edit.html', {
         'user_form': user_form,
         'profile_form': profile_form,
         'user': user,
