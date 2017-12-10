@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #THIRD_PARTY_APPS/
-    'apps.bugueiro.apps.BugueiroConfig',
+    'apps.bugueiro',
     'apps.api',
     'rest_framework',
     'rest_framework.authtoken',
