@@ -7,10 +7,10 @@ from .base import  *
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd4hgjlihk1j4dc',
-        'USER': 'owunjegqzpovqn',
-        'PASSWORD': 'abc76cc97ab839fc5d999aecae0e840d4973f72eb24b82fefdcfa3314aae0d31',
-        'HOST': 'ec2-54-235-213-202.compute-1.amazonaws.com',
+        'NAME': 'd9jm4p9joa4irh',
+        'USER': 'twxbuigxkboycu',
+        'PASSWORD': '6de14b30bc4efb4c177c4cbeca256be6329ad1d7e52d1e066c55f5d531fad925',
+        'HOST': 'ec2-54-163-230-219.compute-1.amazonaws.com',
         'PORT': '5432',
     }
     #'default': {
