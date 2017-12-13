@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #THIRD_PARTY_APPS/
     'apps.bugueiro',
     'apps.api',
     'rest_framework',
@@ -93,10 +94,10 @@ WSGI_APPLICATION = 'bugueiros.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd9jm4p9joa4irh',
-        'USER': 'twxbuigxkboycu',
-        'PASSWORD': '6de14b30bc4efb4c177c4cbeca256be6329ad1d7e52d1e066c55f5d531fad925',
-        'HOST': 'ec2-54-163-230-219.compute-1.amazonaws.com',
+        'NAME': 'bugueiros',
+        'USER': 'postgres',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
     #'default': {
@@ -163,6 +164,12 @@ STATIC_URL = '/static/'
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 
 # Media
 MEDIA_URL = '/media/'
