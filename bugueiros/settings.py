@@ -44,12 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #THIRD_PARTY_APPS/
-    #'apps.bugueiro.apps.BugueiroConfig',
-    'apps.bugueiro',
-    'apps.api',
     'rest_framework',
     'rest_framework.authtoken',
+    'apps.bugueiro',
+    'apps.api',
     'corsheaders',
 ]
 
@@ -107,11 +105,6 @@ DATABASES = {
     #}
 }
 
-# Heroku: Update database configuration from $DATABASE_URL.
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -138,6 +131,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Heroku: Update database configuration from $DATABASE_URL.
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 
 # Internationalization
