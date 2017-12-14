@@ -92,11 +92,11 @@ WSGI_APPLICATION = 'bugueiros.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bugueiros',
-        'USER': 'postgres',
+        'NAME': 'd9jm4p9joa4irh',
+        'USER': 'twxbuigxkboycu',
         'PASSWORD': '123',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'HOST': 'ec2-54-163-230-219.compute-1.amazonaws.com',
+        'PORT': '6de14b30bc4efb4c177c4cbeca256be6329ad1d7e52d1e066c55f5d531fad925',
     }
     #'default': {
     #    'ENGINE': 'django.db.backends.sqlite3',
