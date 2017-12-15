@@ -47,8 +47,9 @@ class Profile(models.Model):
 class Travel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="travel")
     trip = models.ForeignKey('self', blank=True, null=True)
-    path = models.TextField(max_length=500)
-    seq = models.IntegerField(blank=True, null=True)
+    latitude = models.TextField(max_length=100, blank=True, null=True)
+    longitude = models.TextField(blank=True, null=True)
+    sequence = models.IntegerField()
     start = models.BooleanField(default=False)
     end = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
