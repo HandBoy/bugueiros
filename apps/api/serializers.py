@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from apps.bugueiro.models import Profile
+from apps.bugueiro.models import Profile, Travel
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -23,4 +23,9 @@ class UserSerializer(serializers.ModelSerializer):
     def get_token(self, obj):
         return self.token
 
+
+class TravelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Travel
+        fields = '__all__'
 

@@ -1,18 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 
-from rest_framework.decorators import list_route, api_view
+from rest_framework.decorators import list_route
 from rest_framework.response import Response
 from rest_framework.status import HTTP_401_UNAUTHORIZED
 from rest_framework.views import APIView
 from rest_framework import viewsets, status
 from rest_framework.authtoken.models import Token
-from django.http import JsonResponse
+from rest_framework.authentication import TokenAuthentication
 
-from .serializers import UserSerializer
-from django.views.decorators.csrf import csrf_exempt
+from .serializers import UserSerializer, TravelSerializer
+from ..bugueiro.models import Travel
 
 # Create your views here.
 
@@ -85,3 +86,18 @@ class UserLogin(APIView):
         serializer = UserSerializer(user)
         serializer.token = token.key
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class TravelViewSet(APIView):
+    queryset = Travel.objects.all()
+    serializer = TravelSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = []
+
+    def post(self, request, format=None):
+        serializer = TravelSerializer(data=request.data)
+
+        #travel.data = request.data
+        if serializer.is_valid():
+            travel = serializer.save()
+            return Response({"travel": travel.pk})
