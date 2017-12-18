@@ -11,9 +11,12 @@ from rest_framework.views import APIView
 from rest_framework import viewsets, status
 from rest_framework.authtoken.models import Token
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.renderers import JSONRenderer
 
-from .serializers import UserSerializer, TravelSerializer
-from ..bugueiro.models import Travel
+from .serializers import UserSerializer, TravelSerializer, ScheduleSerializer
+from ..bugueiro.models import Travel, Schedule
+
+from datetime import date
 
 # Create your views here.
 
@@ -97,7 +100,19 @@ class TravelViewSet(APIView):
     def post(self, request, format=None):
         serializer = TravelSerializer(data=request.data)
 
-        #travel.data = request.data
         if serializer.is_valid():
             travel = serializer.save()
             return Response({"travel": travel.pk})
+
+
+class ScheduleViewSet(APIView):
+    queryset = Schedule.objects.all()
+    serializer = ScheduleSerializer(queryset, many=True)
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = []
+
+    def get(self, request, format=None):
+        schedule = Schedule.objects.filter(created_date__day=date.today().day)
+        serializer = ScheduleSerializer(schedule, many=True)
+        #json = JSONRenderer().render(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)

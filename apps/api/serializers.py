@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from apps.bugueiro.models import Profile, Travel
+from apps.bugueiro.models import Profile, Travel, Schedule, QueueSchedule
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -24,8 +24,34 @@ class UserSerializer(serializers.ModelSerializer):
         return self.token
 
 
+class UsernameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name')
+
 class TravelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Travel
         fields = '__all__'
+
+
+# MELHORAR PARA NÂO USAR O USERNAMESESIALIZER
+class QueueScheduleSerializer(serializers.ModelSerializer):
+    user = UsernameSerializer(many=False)
+
+    class Meta:
+        model = QueueSchedule
+        fields = ('user', 'position')
+        depth = 1
+        ordering = ['position']
+
+
+class ScheduleSerializer(serializers.ModelSerializer):
+    queue = QueueScheduleSerializer(many=True)
+
+    class Meta:
+        model = Schedule
+        fields = '__all__'
+
+
 

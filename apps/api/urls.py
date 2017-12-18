@@ -2,7 +2,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 from django.conf.urls import url, include
 from django.views.decorators.csrf import csrf_exempt
-from .views import get_auth_token, UserLogin, LoginViewSet, TravelViewSet
+from .views import get_auth_token, UserLogin, LoginViewSet, TravelViewSet, ScheduleViewSet
 
 
 
@@ -17,4 +17,5 @@ urlpatterns = [
     url(r'^token/$', get_auth_token),
     url(r'^login/$', UserLogin.as_view()),
     url(r'^travel/$', TravelViewSet.as_view()),
+    url(r'^queue/$', ScheduleViewSet.as_view()),
 ]
