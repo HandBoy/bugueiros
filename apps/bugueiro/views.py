@@ -1,17 +1,17 @@
+from datetime import date
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db import transaction
 from .forms import UserForm, ProfileForm, SignUpForm
-from .models import Profile;
+from .models import Profile
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Permission
+from .models import Schedule, QueueSchedule
+from datetime import date
 
 # Create your views here.
-
-
 def index(request):
     context = {}
     # context['cursos'] = Curso.objects.all()
@@ -105,3 +105,26 @@ def signup(request):
 def profile(request):
     context = {}
     return render(request, template_name='profile/profile.html', context=context)
+
+
+def initSchedule(request):
+    if request.method == 'GET':
+
+        today = date.today()
+        schedule = Schedule.objects.filter(created_date__day=today.day).count()
+        if schedule <= 0:
+            schedule = Schedule()
+            schedule.version = 0
+            schedule.save()
+            #users = Profile.objects.filter(permission=4)
+            users = User.objects.filter(profile__permission=4)
+            count = 0
+            for user in users:
+                node = QueueSchedule()
+                node.user = user
+                node.schedule = schedule
+                node.position = count
+                count += 1
+                node.save()
+
+        return render(request, template_name='index.html')

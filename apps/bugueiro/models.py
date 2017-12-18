@@ -53,3 +53,16 @@ class Travel(models.Model):
     start = models.BooleanField(default=False)
     end = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
+
+
+class Schedule(models.Model):
+    version = models.IntegerField()
+    created_date = models.DateTimeField(auto_now_add=True)
+
+
+class QueueSchedule(models.Model):
+    user = models.ForeignKey(User)
+    schedule = models.ForeignKey(Schedule)
+    position = models.IntegerField()
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
