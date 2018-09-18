@@ -14,7 +14,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.renderers import JSONRenderer
 
 from .serializers import UserSerializer, TravelSerializer, ScheduleSerializer
-from ..bugueiro.models import Travel, Schedule
+from ..bugueiro.models import Travel, Schedule, QueueSchedule
 
 from datetime import date
 
@@ -92,8 +92,6 @@ class UserLogin(APIView):
 
 
 class TravelViewSet(APIView):
-    queryset = Travel.objects.all()
-    serializer = TravelSerializer
     authentication_classes = (TokenAuthentication,)
     permission_classes = []
 
@@ -105,9 +103,12 @@ class TravelViewSet(APIView):
             return Response({"travel": travel.pk})
 
 
+    def post(self, request, pk, format=None):
+        queryset = QueueSchedule.objects.filter(schedule=pk)
+
+
+
 class ScheduleViewSet(APIView):
-    queryset = Schedule.objects.all()
-    serializer = ScheduleSerializer(queryset, many=True)
     authentication_classes = (TokenAuthentication,)
     permission_classes = []
 

@@ -1,0 +1,148 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block css-style %}
+    <!-- Page JS Plugins CSS -->
+        <link rel="stylesheet" href="{% static 'assets/js/plugins/datatables/jquery.dataTables.min.css'%}">
+{% endblock %}
+{% block page-header %}
+    <div class="content bg-gray-lighter">
+        <div class="row items-push">
+            <div class="col-sm-7">
+                <h1 class="page-heading">
+                    Escalas <small> cadastradas no sistema.</small>
+                </h1>
+            </div>
+            <div class="col-sm-5 text-right hidden-xs">
+                <ol class="breadcrumb push-10-t">
+                    <li>Usuários</li>
+                    <li><a class="link-effect" href="">Listagem</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block page-content %}
+<!-- Page Content -->
+    <div class="content">
+
+        <!-- Dynamic Table Full Pagination -->
+        <div class="block">
+            <div class="block-header">
+
+            <div class="block-content">
+                <!-- DataTables init on table by adding .js-dataTable-full-pagination class, functionality initialized in js/pages/base_tables_datatables.js -->
+                <table class="table table-bordered table-striped js-dataTable-full-pagination">
+                    <thead>
+                        <tr>
+                            <th class="text-center"> Número</th>
+                            <th>Nome</th>
+                            <th class="hidden-xs">Email</th>
+                            <th class="hidden-xs" style="width: 18%;">Nível de Acesso</th>
+                            <th class="text-center" style="width: 10%;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in usuarios %}
+                            <tr>
+                                <td class="text-center">{{ forloop.counter }}</td>
+                                <td class="font-w600">{{ user.first_name }} {{ user.last_name }}</td>
+                                <td class="hidden-xs">{{ user.email }}</td>
+                                <td class="hidden-xs">
+                                    <span class="label label-{% if user.profile.permission|stringformat:"s" == "Buqueiro"%}warning
+{% elif user.profile.permission|stringformat:"s" == "Turista" %}info
+{% elif user.profile.permission|stringformat:"s" == "Bloqueado" %}danger
+{% elif user.profile.permission|stringformat:"s" == "Admin" %}success
+{% elif user.profile.permission|stringformat:"s" == "Operador" %}primary
+{% elif user.profile.permission|stringformat:"s" == "Super Admin" %}success{% endif %}">
+                                        {{ user.profile.permission }}
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a href="{%  url 'bugue:update_profile' pk=user.pk %}">
+                                            <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit User">
+                                                <i class="fa fa-pencil"></i>
+                                            </button>
+                                        </a>
+                                        <button class="btn btn-xs btn-default" type="button" data-toggle="modal" data-target="#modal-block" data-tt="tooltip" title="Block User"><i class="fa fa-ban"></i></button>
+                                        <button class="btn btn-xs btn-default" type="button" data-toggle="modal" data-target="#modal-remove" data-tt="tooltip" title="Remove User"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>Sorry, no users in this list.</tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- Fade In Modal -->
+            <div class="modal fade" id="modal-block" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="block block-themed block-transparent remove-margin-b">
+                            <div class="block-header bg-primary-dark">
+                                <ul class="block-options">
+                                    <li>
+                                        <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                                    </li>
+                                </ul>
+                                <h3 class="block-title">Bloqueio de usuário</h3>
+                            </div>
+                            <div class="block-content">
+                                <p>Deseja Bloquear o usuário?</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+                            <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal"><i class="fa fa-check"></i> Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal-remove" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="block block-themed block-transparent remove-margin-b">
+                            <div class="block-header bg-primary-dark">
+                                <ul class="block-options">
+                                    <li>
+                                        <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                                    </li>
+                                </ul>
+                                <h3 class="block-title">Remover usuário</h3>
+                            </div>
+                            <div class="block-content">
+                                <p>Deseja remover o usuário?</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+                            <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal"><i class="fa fa-check"></i> Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Fade In Modal -->
+        </div>
+        <!-- END Dynamic Table Full Pagination -->
+
+    </div>
+    <!-- END Page Content -->
+{% endblock %}
+
+{% block script-page %}
+    <!-- Page JS Plugins -->
+    <script src="{% static 'assets/js/plugins/datatables/jquery.dataTables.min.js'%}"></script>
+
+    <!-- Page JS Code -->
+    <script src="{% static 'assets/js/pages/base_tables_datatables.js'%}"></script>
+
+    <script type="text/javascript">
+        $("[data-tt=tooltip]").tooltip();
+    </script>
+{% endblock %}

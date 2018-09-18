@@ -64,5 +64,6 @@ class QueueSchedule(models.Model):
     user = models.ForeignKey(User)
     schedule = models.ForeignKey(Schedule, related_name="queue")
     position = models.IntegerField()
+    situation = models.IntegerField(default=0) #0 wait #1 in travel #2 not working
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)

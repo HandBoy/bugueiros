@@ -56,7 +56,7 @@ coverage.xml
 *.log
 local_settings.py
 .idea/*
-bugueiro/migrations/
+apps/bugueiro/migrations/*
 
 # Flask stuff:
 instance/
@@ -96,4 +96,5 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
 

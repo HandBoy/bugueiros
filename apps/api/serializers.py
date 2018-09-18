@@ -41,7 +41,7 @@ class QueueScheduleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = QueueSchedule
-        fields = ('user', 'position')
+        fields = ('user', 'position','schedule')
         depth = 1
         ordering = ['position']
 
